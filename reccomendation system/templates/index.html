@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Recommendation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #1e90ff;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        .form-section label {
+            font-weight: bold;
+        }
+        .form-control {
+            background-color: #333;
+            color: #f1f1f1;
+            border-radius: 10px;
+            border: 1px solid #555;
+        }
+        .form-control::placeholder {
+            color: #888;
+        }
+        .form-control:focus {
+            background-color: #444;
+            color: #f1f1f1;
+            border-color: #1e90ff;
+        }
+        .btn-primary {
+            background-color: #1e90ff;
+            border-color: #1e90ff;
+            border-radius: 20px;
+        }
+        .btn-primary:hover {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .container {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+            margin-top: 20px;
+        }
+        .hero {
+            background: url('https://cdn.thewirecutter.com/wp-content/media/2024/07/laptopstopicpage-2048px-3685-2x1-1.jpg?width=2048&quality=75&crop=2:1&auto=webp') no-repeat center center;
+            background-size: cover;
+            height: 400px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+        }
+        .about-section, .contact-section {
+            padding: 40px;
+            background-color: #222;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #1e90ff;
+            color: white;
+            text-align: center;
+            border-radius: 15px;
+        }
+        .navbar {
+            background-color: #333;
+        }
+        .navbar a {
+            color: #f1f1f1;
+            font-weight: bold;
+        }
+        .navbar .btn {
+            margin-left: 10px;
+            border-radius: 20px;
+        }
+        .btn-outline-light {
+            color: #f1f1f1;
+            border-color: #f1f1f1;
+        }
+        .btn-outline-light:hover {
+            color: #1e90ff;
+            background-color: #f1f1f1;
+            border-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Laptop Finder</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-us">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-us">Contact Us</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-light me-2" type="button">Login</button>
+                <button class="btn btn-light" type="button">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Background Image -->
+    <div class="hero"></div>
+
+    <div class="container">
+        <!-- Laptop Recommendation Form -->
+        <h1 class="text-center">Find Your Perfect Laptop</h1>
+        <form action="/recommend" method="POST">
+            <div class="form-section">
+                <label for="min_budget">Minimum Budget:</label>
+                <input type="number" name="min_budget" class="form-control" required>
+            </div>
+            <div class="form-section">
+                <label for="max_budget">Maximum Budget:</label>
+                <input type="number" name="max_budget" class="form-control" required>
+            </div>
+            <div class="form-section">
+                <label for="use_case">Use Case:</label>
+                <select name="use_case" class="form-control" required>
+                    <option value="gaming">Gaming</option>
+                    <option value="business">Business/Professional</option>
+                    <option value="home/everyday use">Home/Everyday Use</option>
+                    <option value="budget friendly">Budget Friendly</option>
+                    <option value="multimedia/entertainment">Multimedia/Entertainment</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <label for="os_preference">Operating System:</label>
+                <select name="os_preference" class="form-control" required>
+                    <option value="windows">Windows</option>
+                    <option value="macos">MacOS</option>
+                    <option value="dos">DOS</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <label for="min_ram">Minimum RAM:</label>
+                <select name="min_ram" class="form-control" required>
+                    <option value="4 gb">4 GB</option>
+                    <option value="8 gb">8 GB</option>
+                    <option value="16 gb">16 GB</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <label for="storage_type">Storage Type (optional):</label>
+                <input type="text" name="storage_type" class="form-control">
+            </div>
+            <div class="form-section">
+                <label for="min_display_size">Minimum Display Size (optional):</label>
+                <input type="number" name="min_display_size" class="form-control">
+            </div>
+            <div class="form-section">
+                <label for="brand_preference">Laptop Brand (optional):</label>
+                <input type="text" name="brand_preference" class="form-control">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Find Laptops</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- About Us Section -->
+    <div id="about-us" class="about-section container">
+        <h2>About Us</h2>
+        <p>We are a team of tech enthusiasts committed to helping you find the perfect laptop. Whether you're a gamer, a professional, or just need a reliable device for everyday tasks, we've got you covered with personalized recommendations based on your needs and budget.</p>
+        <p>Our mission is to make technology accessible and simple for everyone, ensuring that you get the best value for your money with informed decisions.</p>
+    </div>
+
+    <!-- Contact Us Section -->
+    <div id="contact-us" class="contact-section container">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out to us:</p>
+        <ul>
+            <li>Email: support@laptopfinder.com</li>
+
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Laptop Recommendation System. All rights reserved.
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

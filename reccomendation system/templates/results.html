@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Laptops</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            background-color: rgba(34, 34, 34, 0.85);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8);
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1e90ff;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .laptop-card {
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .laptop-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        .laptop-img {
+            width: 100%;
+            border-radius: 10px;
+            transition: opacity 0.3s ease;
+        }
+        .laptop-img:hover {
+            opacity: 0.9;
+        }
+        .card {
+            background-color: #222;
+            border: none;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            color: #1e90ff;
+            text-align: center;
+        }
+        .card-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #c7c7c7;
+        }
+        .strong-label {
+            color: #f9c74f;
+            font-weight: bold;
+        }
+        .btn-secondary {
+            background-color: #f9c74f;
+            border-color: #f9c74f;
+            font-size: 1.2rem;
+            padding: 10px 30px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #f1a208;
+            border-color: #f1a208;
+        }
+        .text-center a {
+            text-decoration: none;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #1e90ff;
+            color: white;
+            text-align: center;
+            border-radius: 15px;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .card-title {
+                font-size: 1.2rem;
+            }
+            .card-text {
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .btn-secondary {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recommended Laptops</h1>
+        <div class="row">
+            {% for laptop in laptops %}
+            <div class="col-lg-4 col-md-6 col-sm-12 laptop-card">
+                <div class="card">
+                    <img src="{{ laptop['img_link'] }}" class="card-img-top laptop-img" alt="Laptop Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ laptop['name'] }}</h5>
+                        <p class="card-text">
+                            <span class="strong-label">Price:</span> {{ laptop['price'] }}<br>
+                            <span class="strong-label">Processor:</span> {{ laptop['processor'] }}<br>
+                            <span class="strong-label">RAM:</span> {{ laptop['ram'] }}<br>
+                            <span class="strong-label">Storage:</span> {{ laptop['storage'] }}<br>
+                            <span class="strong-label">Rating:</span> {{ laptop['rating'] }} ({{ laptop['no_of_ratings'] }} ratings)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="/" class="btn btn-secondary">Search Again</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Laptop Recommendation System. All rights reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
